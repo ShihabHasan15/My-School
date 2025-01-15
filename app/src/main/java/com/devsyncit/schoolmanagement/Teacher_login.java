@@ -119,7 +119,6 @@ public class Teacher_login extends AppCompatActivity {
                                     if (user_email.contains(email) && user_password.contains(password)){
                                         isMatched = true;
                                     }
-
                                 }
 
                                 if (isMatched == true){
