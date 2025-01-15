@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:backgroundTint="#E9F4F2F2"
+        android:layout_margin="10dp"
+        app:cardElevation="10dp"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/assignment_card"
+            android:layout_width="90dp"
+            android:layout_height="80dp"
+            android:backgroundTint="@color/light_blue"
+            app:cardCornerRadius="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="20dp">
+                <ImageView
+                    android:id="@+id/assignment_subject_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/math_subject_image"
+                    />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/assignment_subject_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numerical Analysis"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mulish_bold"
+            />
+
+            <TextView
+                android:id="@+id/assignment_overview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 experiments"
+                android:textSize="15sp"
+                android:textColor="@color/grey"
+                android:fontFamily="@font/mulish_bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submission : "
+                android:textColor="@color/grey"
+                android:textSize="15sp"
+                android:fontFamily="@font/mulish_bold"
+                />
+
+                <TextView
+                    android:id="@+id/submission_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22-12-2024"
+                    android:fontFamily="@font/mulish_bold"
+                    android:textColor="@color/grey"
+                    android:textSize="15sp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

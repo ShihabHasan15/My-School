@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/bottom_home"
+        android:title="Home"
+        app:showAsAction="always"
+        android:icon="@drawable/bottom_nav_home"
+        />
+
+    <item
+        android:id="@+id/bottom_teachers"
+        android:title="Teachers"
+        app:showAsAction="always"
+        android:icon="@drawable/bottom_nav_teachers"
+        />
+
+    <item
+        android:id="@+id/bottom_assignments"
+        android:title="Assignments"
+        app:showAsAction="always"
+        android:icon="@drawable/bottom_nav_book_assignment"
+        />
+
+    <item
+        android:id="@+id/bottom_widget_menu"
+        android:title="Menu"
+        app:showAsAction="always"
+        android:icon="@drawable/bottom_nav_widget_menu"
+        />
+
+</menu>

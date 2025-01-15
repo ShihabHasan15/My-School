@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/blue"
+    android:orientation="vertical">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        app:lottie_rawRes="@raw/books_reading_lottie"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_page_design"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/login_school_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/school_name"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mulish_bold"
+            android:textSize="22sp"
+            />
+
+        <TextView
+            android:id="@+id/login_school_slogan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/grey"
+            android:text="@string/school_slogan"
+            android:fontFamily="@font/mulish_bold"
+            android:textSize="17sp"
+            android:layout_margin="20dp"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/as_student"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:padding="15dp"
+            android:text="Login as Student"
+            android:fontFamily="@font/mulish_bold"
+            app:cornerRadius="8dp"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/as_teacher"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Login as Teacher"
+            android:padding="15dp"
+            android:fontFamily="@font/mulish_bold"
+            app:cornerRadius="8dp"
+            android:textSize="16sp"
+            app:strokeColor="@color/blue"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/blue"
+            app:strokeWidth="1dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Haven't Any Account? "
+            android:textColor="@color/black"
+            android:fontFamily="@font/mulish_bold"
+            android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/user_sign_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                android:fontFamily="@font/mulish_bold"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

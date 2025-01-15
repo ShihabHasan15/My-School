@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00FFFFFF"
+    >
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_sheet_design"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/bottom_sheet_teacher_image"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/ic_launcher_background"
+            app:civ_border_color="@color/black"
+            app:civ_border_width="2dp"
+            android:layout_gravity="center"/>
+
+
+        <TextView
+            android:id="@+id/bottom_sheet_teacher_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Michael Johnson"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mulish_bold"
+            android:textSize="22sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mulish_bold"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:id="@+id/bottom_sheet_teacher_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Math"
+            android:textSize="18sp"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/mulish_bold"
+            android:layout_marginTop="7dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Info"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mulish_bold"
+            android:layout_marginTop="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/phone"
+            android:layout_marginRight="8dp"/>
+
+            <TextView
+                android:id="@+id/bottom_sheet_teacher_phone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01903551267"
+                android:textSize="18sp"
+                android:textColor="@color/grey"
+                android:fontFamily="@font/mulish_bold"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login_email_icon"
+            android:layout_marginRight="8dp"/>
+
+            <TextView
+                android:id="@+id/bottom_sheet_teacher_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="shihabhasanhridoy06@gmail.com"
+                android:textSize="18sp"
+                android:textColor="@color/grey"
+                android:fontFamily="@font/mulish_bold"
+                android:layout_marginBottom="20dp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
