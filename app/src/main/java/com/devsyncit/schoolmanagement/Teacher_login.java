@@ -31,7 +31,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Teacher_login extends AppCompatActivity {
-
     MaterialButton sign_in_btn;
     TextInputEditText email, password;
     HashMap<String, String> hashMap;
