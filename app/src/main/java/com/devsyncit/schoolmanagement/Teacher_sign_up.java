@@ -45,7 +45,6 @@ public class Teacher_sign_up extends AppCompatActivity {
         sign_up_as_student = findViewById(R.id.sign_up_as_student);
 
 
-
         teacher_sign_up_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +70,7 @@ public class Teacher_sign_up extends AppCompatActivity {
                     }else {
 
                         RequestQueue queue = Volley.newRequestQueue(Teacher_sign_up.this);
-                        String url = "http://192.168.0.111/Apps/teacher_data.php?id="+t_id+"&name="+t_full_name+"&email="+t_email+"&password="+t_password+"&mb_number="+t_mobile_number+"&department="+t_department;
+                        String url = "http://192.168.0.102/Apps/teacher_data.php?id="+t_id+"&name="+t_full_name+"&email="+t_email+"&password="+t_password+"&mb_number="+t_mobile_number+"&department="+t_department;
 
                         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                                 new Response.Listener<String>() {

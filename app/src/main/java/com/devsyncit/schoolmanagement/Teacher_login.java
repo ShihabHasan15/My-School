@@ -74,7 +74,7 @@ public class Teacher_login extends AppCompatActivity {
                     }else {
 
                         RequestQueue queue = Volley.newRequestQueue(Teacher_login.this);
-                        String url = "http://192.168.0.111/Apps/teacher_data_get.php";
+                        String url = "http://192.168.0.102/Apps/teacher_data_get.php";
 
                         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,
                                 null, new Response.Listener<JSONArray>() {
@@ -119,15 +119,19 @@ public class Teacher_login extends AppCompatActivity {
                                     if (user_email.contains(email) && user_password.contains(password)){
                                         isMatched = true;
                                     }
+
+                                    if (isMatched == true){
+
+                                        startActivity(new Intent(Teacher_login.this, Student_dashboard.class));
+                                        Toast.makeText(Teacher_login.this, "Welcome Back", Toast.LENGTH_SHORT).show();
+                                        finish();
+
+                                    }
+
+                                    break;
                                 }
 
-                                if (isMatched == true){
-
-                                    startActivity(new Intent(Teacher_login.this, Student_dashboard.class));
-                                    Toast.makeText(Teacher_login.this, "Welcome Back", Toast.LENGTH_SHORT).show();
-                                    finish();
-
-                                }else {
+                                if (isMatched==false){
 
                                     Toast.makeText(Teacher_login.this, "Email/Password doesn't match", Toast.LENGTH_SHORT).show();
 
