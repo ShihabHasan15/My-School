@@ -89,7 +89,7 @@
     </androidx.appcompat.widget.Toolbar>
 
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/teacher_toolbar"
@@ -199,6 +199,7 @@
                 </LinearLayout>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/view_students_btn"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:backgroundTint="@color/white"
@@ -242,24 +243,25 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/white"
-            android:layout_marginTop="10dp"
-            >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class Schedule"
+            android:fontFamily="@font/mulish_bold"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:layout_marginTop="15dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/timeLineRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"/>
-
-        </com.google.android.material.card.MaterialCardView>
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

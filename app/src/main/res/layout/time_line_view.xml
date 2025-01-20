@@ -21,7 +21,7 @@
                 android:id="@+id/class_start_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="@color/grey"
                 android:fontFamily="@font/mulish_bold"
                 android:text="8:30 AM"/>
@@ -36,7 +36,7 @@
                 android:id="@+id/class_end_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textColor="@color/grey"
                 android:fontFamily="@font/mulish_bold"
                 android:text="9:00 AM"/>
@@ -68,10 +68,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/mulish_bold"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="@color/grey"
                     android:text="Subject"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="16dp"
                     />
 
                 <TextView
@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:fontFamily="@font/mulish_bold"
                     android:text="Environmental Science"
                     android:maxLines="1"
@@ -89,7 +89,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/grey"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:fontFamily="@font/mulish_bold"
                     android:text="Class"
                     android:layout_marginTop="10dp"/>
@@ -99,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:fontFamily="@font/mulish_bold"
                     android:text="9"
                     />

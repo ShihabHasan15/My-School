@@ -18,6 +18,7 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.AnimationTypes;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ public class Teacher_dashboard extends AppCompatActivity {
     RecyclerView timeLineRecyclerView;
     ImageSlider imageSlider;
     List<SlideModel> teacher_notice_board;
+    MaterialCardView view_students_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class Teacher_dashboard extends AppCompatActivity {
 
         timeLineRecyclerView = findViewById(R.id.timeLineRecyclerView);
         imageSlider = findViewById(R.id.teacher_dash_image_slider);
+        view_students_btn = findViewById(R.id.view_students_btn);
 
 
         teacher_notice_board = new ArrayList<>();
