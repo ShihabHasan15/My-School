@@ -1,5 +1,6 @@
 package com.devsyncit.schoolmanagement;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Teacher_dashboard extends AppCompatActivity {
-
     RecyclerView timeLineRecyclerView;
     ImageSlider imageSlider;
     List<SlideModel> teacher_notice_board;
@@ -39,6 +39,12 @@ public class Teacher_dashboard extends AppCompatActivity {
         imageSlider = findViewById(R.id.teacher_dash_image_slider);
         view_students_btn = findViewById(R.id.view_students_btn);
 
+        view_students_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Teacher_dashboard.this, teacher_classes_name.class));
+            }
+        });
 
         teacher_notice_board = new ArrayList<>();
 
