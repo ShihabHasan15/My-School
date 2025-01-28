@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Teacher_dashboard"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/teacher_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/toolbar_design"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/teacher_profile_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_gravity="center"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:id="@+id/teacher_profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dipankar Bala"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/mulish_bold"
+                    android:textSize="18sp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    >
+
+                    <TextView
+                        android:id="@+id/teacher_profile_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="dipankarbala@gmail.com"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/mulish_bold"
+                        android:textSize="16sp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/student_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notification_icon"
+            android:layout_gravity="right"
+            android:background="#00FFFFFF"
+            android:layout_marginRight="20dp"
+            />
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/teacher_toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:scrollbars="none"
+        android:fillViewport="true"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        >
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/teacher_dash_image_slider_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="50dp">
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/teacher_dash_image_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            app:iss_auto_cycle="true"
+            app:iss_period="1000"
+            app:iss_delay="1000"
+            app:iss_text_align="CENTER"
+            app:iss_no_dots="true"
+            />
+
+    </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/teacher_dash_image_slider_card"
+            android:text="Overview"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mulish_bold"
+            android:textSize="22sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:backgroundTint="#F8C9BA"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:backgroundTint="#F47046"
+                        app:cardCornerRadius="15dp"
+                        >
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/student_hat"
+                            android:layout_gravity="center"/>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/students_count_under_teacher"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/mulish_bold"
+                            android:text="280"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/grey"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/mulish_bold"
+                            android:text="Total Students"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/view_students_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/white"
+                    app:cardCornerRadius="7dp"
+                    android:layout_marginTop="12dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="View Students"
+                            android:fontFamily="@font/mulish_bold"
+                            android:textSize="15sp"
+                            android:textColor="@color/grey"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentBottom="true"
+                            android:gravity="center"/>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_forward"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentBottom="true"
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class Schedule"
+            android:fontFamily="@font/mulish_bold"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:layout_marginTop="15dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/timeLineRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

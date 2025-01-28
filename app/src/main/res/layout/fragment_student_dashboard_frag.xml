@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Student_dashboard_frag"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/student_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/toolbar_design"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/student_profile_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_gravity="center"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:id="@+id/student_profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Md Shihab Hasan"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/mulish_bold"
+                    android:textSize="18sp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Class : "
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/mulish_bold"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/student_class"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/mulish_bold"
+                        android:textSize="16sp"
+                        android:text="9"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="    |    "
+                        android:textColor="@color/white"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Roll : "
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/mulish_bold"
+                        android:textSize="16sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/student_roll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/mulish_bold"
+                        android:textSize="16sp"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/student_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notification_icon"
+            android:layout_gravity="right"
+            android:background="#00FFFFFF"
+            android:layout_marginRight="20dp"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@id/student_toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_margin="10dp">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/image_slider_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="50dp">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/image_slider"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                app:iss_auto_cycle="true"
+                app:iss_period="1000"
+                app:iss_delay="1000"
+                app:iss_text_align="CENTER"
+                app:iss_no_dots="true"
+                />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_slider_card"
+            android:text="My Subjects"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mulish_bold"
+            android:textSize="22sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            />
+
+        <GridView
+            android:id="@+id/subject_list_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3"
+            android:scrollbars="none"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

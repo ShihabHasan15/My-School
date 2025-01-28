@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignIn"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="30dp"
+    android:gravity="center"
+    android:background="@color/white">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's Sign in"
+        android:fontFamily="@font/mulish_bold"
+        android:textColor="@color/black"
+        android:textSize="27sp"
+        android:layout_gravity="left"
+        android:textAlignment="gravity"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Back!"
+        android:layout_gravity="left"
+        android:textSize="18sp"
+        android:fontFamily="@font/mulish_bold"
+        android:textColor="@color/grey"
+        android:layout_marginTop="15dp"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeColor="@color/black"
+        android:layout_marginTop="20dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:drawableEnd="@drawable/login_email_icon"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeColor="@color/black"
+        android:layout_marginTop="20dp"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/user_password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/login_password_icon"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/user_reset_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset Password"
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/mulish_bold"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/user_sign_in_btn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:padding="15dp"
+        android:text="Sign in"
+        android:fontFamily="@font/mulish_bold"
+        app:cornerRadius="8dp"
+        android:textSize="20sp"
+        android:layout_marginTop="25dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login as"
+            android:fontFamily="@font/mulish_bold"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/login_as_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  Teacher"
+            android:fontFamily="@font/mulish_bold"
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="By logging in, you agree to our"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/mulish_bold"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terms &amp; Condition"
+        android:textSize="15sp"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/mulish_bold"
+        />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="  &amp;  "
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/mulish_bold"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Privacy Policy"
+            android:textSize="15sp"
+            android:textColor="@color/blue"
+            android:fontFamily="@font/mulish_bold"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>

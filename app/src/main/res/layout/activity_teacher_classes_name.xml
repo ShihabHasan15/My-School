@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".teacher_classes_name"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/teacher_toolbar_classes_and_section"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/toolbar_design"
+        >
+
+
+                <TextView
+                    android:id="@+id/teacher_profile_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Classes and Section"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/mulish_bold"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    />
+
+
+        <ImageButton
+            android:id="@+id/student_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notification_icon"
+            android:layout_gravity="right"
+            android:background="#00FFFFFF"
+            android:layout_marginRight="20dp"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/classes_and_section"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"/>
+
+</LinearLayout>

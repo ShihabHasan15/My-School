@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Teachers_section_fragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/course_teachers_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/toolbar_design"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Course Teachers"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/mulish_bold"
+            android:textSize="20sp"/>
+
+        <ImageButton
+            android:id="@+id/student_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/notification_icon"
+            android:layout_gravity="right"
+            android:background="#00FFFFFF"
+            android:layout_marginRight="20dp"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <ListView
+        android:id="@+id/course_teachers_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/course_teachers_toolbar"
+        android:layout_marginTop="10dp"
+        />
+
+</RelativeLayout>
