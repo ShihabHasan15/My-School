@@ -3,11 +3,12 @@
 header('Content-Type: application/json; charset=utf-8');
 
 $con = mysqli_connect("localhost", "root", "", "teacher");
-
-$result = mysqli_query($con, "SELECT teacher.Id, teacher.Name, teacher_course_list.class, teacher_course_list.section, teacher_course_list.no_of_students, teacher_course_list.course_name
+$t_id = $_GET['t_id'];
+$result = mysqli_query($con, "SELECT teacher.Id, teacher.Name, teacher_course_list.class, 
+teacher_course_list.section, teacher_course_list.no_of_students, teacher_course_list.course_name
 FROM teacher_course_list INNER JOIN teacher
 ON teacher.Id = teacher_course_list.Id
-WHERE teacher_course_list.Id = 101");
+WHERE teacher_course_list.Id = $t_id");
 
 $teacher_courses = array();
 
