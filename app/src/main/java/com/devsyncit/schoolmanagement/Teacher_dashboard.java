@@ -30,7 +30,8 @@ public class Teacher_dashboard extends AppCompatActivity {
     ImageSlider imageSlider;
     List<SlideModel> teacher_notice_board;
     MaterialCardView view_students_btn;
-    TextView teacher_profile_name, teacher_profile_email, students_count_under_teacher;
+    TextView teacher_profile_name, teacher_profile_email;
+    public static TextView students_count_under_teacher;
     public static int total_students = 0;
 
     @Override
@@ -51,10 +52,12 @@ public class Teacher_dashboard extends AppCompatActivity {
             String t_phone_number = intent.getStringExtra("teacher_phone_number");
             String t_id = intent.getStringExtra("teacher_id");
 
+            FetchedTeacherClassesThread thread = new FetchedTeacherClassesThread(Teacher_dashboard.this, t_id);
+            thread.start();
 
             teacher_profile_name.setText(t_name);
             teacher_profile_email.setText(t_email);
-            students_count_under_teacher.setText(""+total_students);
+            students_count_under_teacher.setText(""+FetchedTeacherClassesThread.totalStudents);
 
         view_students_btn.setOnClickListener(new View.OnClickListener() {
             @Override

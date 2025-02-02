@@ -34,8 +34,7 @@ import java.util.HashMap;
 
 public class teacher_classes_name extends AppCompatActivity {
     RecyclerView classes_and_section;
-    HashMap<String, String> hashMap;
-    ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
+    public static int t_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,62 +43,14 @@ public class teacher_classes_name extends AppCompatActivity {
 
         classes_and_section = findViewById(R.id.classes_and_section);
 
-        Intent intent = getIntent();
+         Intent intent = getIntent();
+         t_id = Integer.parseInt(intent.getStringExtra("teacher_id"));
 
-        int t_id = Integer.parseInt(intent.getStringExtra("teacher_id"));
+           ClassesAndSectionAdapter adapter = new ClassesAndSectionAdapter();
+           classes_and_section.setAdapter(adapter);
 
-        RequestQueue queue = Volley.newRequestQueue(teacher_classes_name.this);
-        String url = "http://192.168.0.108/Apps/teacher_course_list_data_get.php?t_id="+t_id;
+           classes_and_section.setLayoutManager(new LinearLayoutManager(teacher_classes_name.this));
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url
-                , null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-
-                arrayList.clear();
-
-                int sum_of_students = 0;
-
-                for (int i=0; i<response.length(); i++){
-
-                    try {
-
-                        JSONObject jsonObject = response.getJSONObject(i);
-
-                        hashMap = new HashMap<>();
-                        hashMap.put("name", jsonObject.getString("name"));
-                        hashMap.put("Class", jsonObject.getString("class"));
-                        hashMap.put("section", jsonObject.getString("section"));
-                        String no_of_students = jsonObject.getString("no_of_students");
-                        hashMap.put("no_of_students", no_of_students);
-                        hashMap.put("course_name", jsonObject.getString("course_name"));
-
-                        arrayList.add(hashMap);
-
-                        sum_of_students = sum_of_students + Integer.parseInt(no_of_students);
-
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-
-                }
-
-                Teacher_dashboard.total_students = sum_of_students;
-
-                ClassesAndSectionAdapter adapter = new ClassesAndSectionAdapter();
-                classes_and_section.setAdapter(adapter);
-
-                classes_and_section.setLayoutManager(new LinearLayoutManager(teacher_classes_name.this));
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        queue.add(jsonArrayRequest);
 
 
 
@@ -134,7 +85,7 @@ public class teacher_classes_name extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull ClassesAndSectionViewHolder holder, int position) {
 
-                HashMap<String, String> get_course_data = arrayList.get(position);
+                HashMap<String, String> get_course_data = FetchedTeacherClassesThread.arrayList.get(position);
 
                 String name = get_course_data.get("name");
                 String Class = get_course_data.get("Class");
@@ -151,7 +102,7 @@ public class teacher_classes_name extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return arrayList.size();
+            return FetchedTeacherClassesThread.arrayList.size();
         }
 
     }
