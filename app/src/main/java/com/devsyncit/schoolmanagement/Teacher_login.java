@@ -59,102 +59,109 @@ public class Teacher_login extends AppCompatActivity {
         });
 
 
-
         sign_in_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                String user_email = email.getText().toString().trim();
+                String user_password = password.getText().toString();
+
+                if (user_email.isEmpty() || user_password.isEmpty()){
+                    Toast.makeText(Teacher_login.this, "Please fill out blank field", Toast.LENGTH_LONG).show();
+                }else {
+                    if (!Patterns.EMAIL_ADDRESS.matcher(user_email).matches()){
+                        Toast.makeText(Teacher_login.this, "Please provide valid email address", Toast.LENGTH_LONG).show();
+                    }else {
+
+                        RequestQueue queue = Volley.newRequestQueue(Teacher_login.this);
+                        String url = "http://192.168.0.108/Apps/teacher_data_get.php";
+
+                        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,
+                                null, new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+
+                                arrayList.clear();
+
+                                for (int i=0; i<response.length(); i++){
+                                    try {
+                                        JSONObject jsonObject = response.getJSONObject(i);
+
+                                        hashMap = new HashMap<>();
+                                        hashMap.put("id", String.valueOf(jsonObject.getInt("id")));
+                                        hashMap.put("name", jsonObject.getString("name"));
+                                        hashMap.put("email", jsonObject.getString("email"));
+                                        hashMap.put("password", jsonObject.getString("password"));
+                                        hashMap.put("mobile_number", jsonObject.getString("mobile_number"));
+                                        hashMap.put("department", jsonObject.getString("department"));
+
+                                        arrayList.add(hashMap);
+
+                                    } catch (JSONException e) {
+                                        throw new RuntimeException(e);
+                                    }
+                                }
+
+                                boolean isMatched = false;
+
+                                for (int i=0; i<arrayList.size(); i++){
+
+                                    HashMap<String, String> getData = arrayList.get(i);
+
+                                    Log.d("output", String.valueOf(arrayList));
+
+                                    String t_id = getData.get("id");
+                                    String full_name = getData.get("name");
+                                    String email = getData.get("email");
+                                    String password = getData.get("password");
+                                    String mobile_number = getData.get("mobile_number");
+                                    String Class = getData.get("department");
 
 
-//                String user_email = email.getText().toString().trim();
-//                String user_password = password.getText().toString();
-//
-//                if (user_email.isEmpty() || user_password.isEmpty()){
-//                    Toast.makeText(Teacher_login.this, "Please fill out blank field", Toast.LENGTH_LONG).show();
-//                }else {
-//                    if (!Patterns.EMAIL_ADDRESS.matcher(user_email).matches()){
-//                        Toast.makeText(Teacher_login.this, "Please provide valid email address", Toast.LENGTH_LONG).show();
-//                    }else {
-//
-//                        RequestQueue queue = Volley.newRequestQueue(Teacher_login.this);
-//                        String url = "http://192.168.0.102/Apps/teacher_data_get.php";
-//
-//                        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,
-//                                null, new Response.Listener<JSONArray>() {
-//                            @Override
-//                            public void onResponse(JSONArray response) {
-//
-//                                arrayList.clear();
-//
-//                                for (int i=0; i<response.length(); i++){
-//                                    try {
-//                                        JSONObject jsonObject = response.getJSONObject(i);
-//
-//                                        hashMap = new HashMap<>();
-//                                        hashMap.put("id", jsonObject.getString("id"));
-//                                        hashMap.put("name", jsonObject.getString("name"));
-//                                        hashMap.put("email", jsonObject.getString("email"));
-//                                        hashMap.put("password", jsonObject.getString("password"));
-//                                        hashMap.put("mobile_number", jsonObject.getString("mobile_number"));
-//                                        hashMap.put("department", jsonObject.getString("department"));
-//                                        arrayList.add(hashMap);
-//
-//                                    } catch (JSONException e) {
-//                                        throw new RuntimeException(e);
-//                                    }
-//                                }
-//
-//                                boolean isMatched = false;
-//
-//                                for (int i=0; i<arrayList.size(); i++){
-//
-//                                    HashMap<String, String> getData = arrayList.get(i);
-//
-//                                    Log.d("output", String.valueOf(arrayList));
-//
-//                                    String roll = getData.get("id");
-//                                    String full_name = getData.get("name");
-//                                    String email = getData.get("email");
-//                                    String password = getData.get("password");
-//                                    String mobile_number = getData.get("mobile_number");
-//                                    String Class = getData.get("department");
-//
-//                                    if (user_email.contains(email) && user_password.contains(password)){
-//                                        isMatched = true;
-//                                    }
-//
-//                                    if (isMatched == true){
-//
-//                                        startActivity(new Intent(Teacher_login.this, Student_dashboard.class));
-//                                        Toast.makeText(Teacher_login.this, "Welcome Back", Toast.LENGTH_SHORT).show();
-//                                        finish();
-//
-//                                    }
-//
-//                                    break;
-//                                }
-//
-//                                if (isMatched==false){
-//
-//                                    Toast.makeText(Teacher_login.this, "Email/Password doesn't match", Toast.LENGTH_SHORT).show();
-//
-//                                }
-//
-//                            }
-//                        }, new Response.ErrorListener() {
-//                            @Override
-//                            public void onErrorResponse(VolleyError error) {
-//                                Toast.makeText(Teacher_login.this, ""+error, Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//
-//                        queue.add(jsonArrayRequest);
-//
-//                    }
-//                }
+                                    if (user_email.contains(email) && user_password.contains(password)){
+                                        isMatched = true;
+                                    }
 
-                startActivity(new Intent(Teacher_login.this, Teacher_dashboard.class));
+                                    if (isMatched == true){
 
+                                        if (user_email.contains("admin@gmail.com") && user_password.contains("admin")){
+                                            startActivity(new Intent(Teacher_login.this, Teacher_dashboard.class));
+                                            finish();
+                                        }else {
+                                            Intent intent = new Intent(Teacher_login.this, Teacher_dashboard.class);
+                                            intent.putExtra("teacher_name",""+full_name);
+                                            intent.putExtra("teacher_email", ""+email);
+                                            intent.putExtra("teacher_phone_number", ""+mobile_number);
+                                            intent.putExtra("teacher_id", ""+t_id);
+                                            startActivity(intent);
+                                            Toast.makeText(Teacher_login.this, "Welcome Back", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                        }
+
+                                        break;
+
+                                    }
+
+                                }
+
+                                if (isMatched==false){
+
+                                    Toast.makeText(Teacher_login.this, "Email/Password doesn't match", Toast.LENGTH_SHORT).show();
+
+                                }
+
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(Teacher_login.this, ""+error, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        queue.add(jsonArrayRequest);
+
+                    }
+                }
             }
         });
 
