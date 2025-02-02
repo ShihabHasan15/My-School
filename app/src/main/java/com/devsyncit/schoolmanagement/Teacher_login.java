@@ -42,7 +42,6 @@ public class Teacher_login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_login);
 
-
         email = findViewById(R.id.user_email);
         password = findViewById(R.id.user_password);
 
@@ -66,15 +65,15 @@ public class Teacher_login extends AppCompatActivity {
                 String user_email = email.getText().toString().trim();
                 String user_password = password.getText().toString();
 
-                if (user_email.isEmpty() || user_password.isEmpty()){
+                if (user_email.isEmpty() || user_password.isEmpty()) {
                     Toast.makeText(Teacher_login.this, "Please fill out blank field", Toast.LENGTH_LONG).show();
-                }else {
-                    if (!Patterns.EMAIL_ADDRESS.matcher(user_email).matches()){
+                } else {
+                    if (!Patterns.EMAIL_ADDRESS.matcher(user_email).matches()) {
                         Toast.makeText(Teacher_login.this, "Please provide valid email address", Toast.LENGTH_LONG).show();
-                    }else {
+                    } else {
 
                         RequestQueue queue = Volley.newRequestQueue(Teacher_login.this);
-                        String url = "http://192.168.0.101/Apps/teacher_data_get.php";
+                        String url = "http://192.168.0.102/Apps/teacher_data_get.php";
 
                         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,
                                 null, new Response.Listener<JSONArray>() {
@@ -83,7 +82,7 @@ public class Teacher_login extends AppCompatActivity {
 
                                 arrayList.clear();
 
-                                for (int i=0; i<response.length(); i++){
+                                for (int i = 0; i < response.length(); i++) {
                                     try {
                                         JSONObject jsonObject = response.getJSONObject(i);
 
@@ -104,7 +103,7 @@ public class Teacher_login extends AppCompatActivity {
 
                                 boolean isMatched = false;
 
-                                for (int i=0; i<arrayList.size(); i++){
+                                for (int i = 0; i < arrayList.size(); i++) {
 
                                     HashMap<String, String> getData = arrayList.get(i);
 
@@ -118,24 +117,36 @@ public class Teacher_login extends AppCompatActivity {
                                     String Class = getData.get("department");
 
 
-                                    if (user_email.contains(email) && user_password.contains(password)){
+                                    if (user_email.contains(email) && user_password.contains(password)) {
                                         isMatched = true;
                                     }
 
-                                    if (isMatched == true){
+                                    if (isMatched == true) {
 
-                                        if (user_email.contains("admin@gmail.com") && user_password.contains("admin")){
+                                        if (user_email.contains("admin@gmail.com") && user_password.contains("admin")) {
                                             startActivity(new Intent(Teacher_login.this, Teacher_dashboard.class));
                                             finish();
-                                        }else {
+                                        } else {
                                             Intent intent = new Intent(Teacher_login.this, Teacher_dashboard.class);
-                                            intent.putExtra("teacher_name",""+full_name);
-                                            intent.putExtra("teacher_email", ""+email);
-                                            intent.putExtra("teacher_phone_number", ""+mobile_number);
-                                            intent.putExtra("teacher_id", ""+t_id);
-                                            startActivity(intent);
-                                            Toast.makeText(Teacher_login.this, "Welcome Back", Toast.LENGTH_SHORT).show();
-                                            finish();
+                                            intent.putExtra("teacher_name", "" + full_name);
+                                            intent.putExtra("teacher_email", "" + email);
+                                            intent.putExtra("teacher_phone_number", "" + mobile_number);
+                                            intent.putExtra("teacher_id", "" + t_id);
+
+                                            FetchedTeacherClassesThread thread = new FetchedTeacherClassesThread(Teacher_login.this, t_id,
+                                                    new FetchedTeacherClassesThread.OnFetchCompleteListener() {
+                                                        @Override
+                                                        public void onFetchComplete(int totalStudents) {
+
+                                                            intent.putExtra("total_students", "" + totalStudents);
+
+                                                            startActivity(intent);
+                                                            Toast.makeText(Teacher_login.this, "Welcome Back", Toast.LENGTH_SHORT).show();
+                                                            finish();
+                                                        }
+                                                    });
+                                            thread.start();
+
                                         }
 
                                         break;
@@ -144,7 +155,7 @@ public class Teacher_login extends AppCompatActivity {
 
                                 }
 
-                                if (isMatched==false){
+                                if (isMatched == false) {
 
                                     Toast.makeText(Teacher_login.this, "Email/Password doesn't match", Toast.LENGTH_SHORT).show();
 
@@ -154,7 +165,7 @@ public class Teacher_login extends AppCompatActivity {
                         }, new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(Teacher_login.this, ""+error, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Teacher_login.this, "" + error, Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -165,7 +176,6 @@ public class Teacher_login extends AppCompatActivity {
             }
         });
 
-        
 
     }
 }

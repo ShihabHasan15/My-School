@@ -68,7 +68,6 @@ public class Student_dashboard_frag extends Fragment {
         imageSlider.startSliding(3000);
 
 
-
         return myView;
     }
 }

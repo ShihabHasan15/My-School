@@ -68,20 +68,20 @@ public class SignIn extends AppCompatActivity {
                 String user_email = email.getText().toString().trim();
                 String user_password = password.getText().toString();
 
-                if (user_email.contains("admin@gmail.com") && user_password.contains("admin")){
+                if (user_email.contains("admin@gmail.com") && user_password.contains("admin")) {
                     startActivity(new Intent(SignIn.this, Student_dashboard.class));
                     Toast.makeText(SignIn.this, "Welcome Back", Toast.LENGTH_SHORT).show();
                     finish();
                 }
 
-                if (user_email.isEmpty() || user_password.isEmpty()){
+                if (user_email.isEmpty() || user_password.isEmpty()) {
                     Toast.makeText(SignIn.this, "Please fill out blank field", Toast.LENGTH_LONG).show();
-                }else {
-                    if (!Patterns.EMAIL_ADDRESS.matcher(user_email).matches()){
+                } else {
+                    if (!Patterns.EMAIL_ADDRESS.matcher(user_email).matches()) {
                         Toast.makeText(SignIn.this, "Please provide valid email address", Toast.LENGTH_LONG).show();
-                    }else {
+                    } else {
                         RequestQueue queue = Volley.newRequestQueue(SignIn.this);
-                        String url = "http://192.168.0.101/Apps/student_data_get.php";
+                        String url = "http://192.168.0.102/Apps/student_data_get.php";
 
                         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                                 new Response.Listener<JSONArray>() {
@@ -92,7 +92,7 @@ public class SignIn extends AppCompatActivity {
 
                                         arrayList.clear();
 
-                                        for (int i=0; i<response.length(); i++){
+                                        for (int i = 0; i < response.length(); i++) {
                                             try {
                                                 JSONObject jsonObject = response.getJSONObject(i);
 
@@ -112,7 +112,7 @@ public class SignIn extends AppCompatActivity {
 
                                         boolean isMatched = false;
 
-                                        for (int i=0; i<arrayList.size(); i++){
+                                        for (int i = 0; i < arrayList.size(); i++) {
                                             HashMap<String, String> getData = arrayList.get(i);
 
                                             Log.d("output", String.valueOf(arrayList));
@@ -124,20 +124,20 @@ public class SignIn extends AppCompatActivity {
                                             String mobile_number = getData.get("mobile_number");
                                             String Class = getData.get("Class");
 
-                                            if (user_email.contains(email) && user_password.contains(password)){
+                                            if (user_email.contains(email) && user_password.contains(password)) {
                                                 isMatched = true;
                                             }
 
-                                            if (isMatched == true){
+                                            if (isMatched == true) {
 
-                                                if (user_email.contains("admin@gmail.com") && user_password.contains("admin")){
+                                                if (user_email.contains("admin@gmail.com") && user_password.contains("admin")) {
                                                     startActivity(new Intent(SignIn.this, Student_dashboard.class));
                                                     finish();
-                                                }else {
+                                                } else {
                                                     Intent intent = new Intent(SignIn.this, Student_dashboard.class);
-                                                    intent.putExtra("student_name",""+full_name);
-                                                    intent.putExtra("student_class", ""+Class);
-                                                    intent.putExtra("student_roll", ""+roll);
+                                                    intent.putExtra("student_name", "" + full_name);
+                                                    intent.putExtra("student_class", "" + Class);
+                                                    intent.putExtra("student_roll", "" + roll);
                                                     startActivity(intent);
                                                     Toast.makeText(SignIn.this, "Welcome Back", Toast.LENGTH_SHORT).show();
                                                     finish();
@@ -148,7 +148,7 @@ public class SignIn extends AppCompatActivity {
 
                                         }
 
-                                        if (isMatched==false){
+                                        if (isMatched == false) {
 
                                             Toast.makeText(SignIn.this, "Email/Password doesn't match", Toast.LENGTH_SHORT).show();
 
@@ -158,7 +158,7 @@ public class SignIn extends AppCompatActivity {
                                 }, new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Toast.makeText(SignIn.this, ""+error, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignIn.this, "" + error, Toast.LENGTH_SHORT).show();
                             }
                         });
 

@@ -18,24 +18,29 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class FetchedTeacherClassesThread extends Thread{
+public class FetchedTeacherClassesThread extends Thread {
 
     HashMap<String, String> hashMap;
     private Context context;
     public static ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
-    public static int totalStudents = 0;
     public String teacher_id;
+    OnFetchCompleteListener listener;
 
-    public FetchedTeacherClassesThread(Context context, String teacher_id) {
+    public interface OnFetchCompleteListener {
+        void onFetchComplete(int totalStudents);
+    }
+
+    public FetchedTeacherClassesThread(Context context, String teacher_id, OnFetchCompleteListener listener) {
         this.context = context;
         this.teacher_id = teacher_id;
+        this.listener = listener;
     }
 
     @Override
     public void run() {
 
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://192.168.0.101/Apps/teacher_course_list_data_get.php?t_id="+teacher_id;
+        String url = "http://192.168.0.102/Apps/teacher_course_list_data_get.php?t_id=" + teacher_id;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url
                 , null, new Response.Listener<JSONArray>() {
@@ -46,7 +51,7 @@ public class FetchedTeacherClassesThread extends Thread{
 
                 int sum_of_students = 0;
 
-                for (int i=0; i<response.length(); i++){
+                for (int i = 0; i < response.length(); i++) {
 
                     try {
 
@@ -70,13 +75,17 @@ public class FetchedTeacherClassesThread extends Thread{
 
                 }
 
-                totalStudents = sum_of_students;
+                if (listener != null) {
+                    listener.onFetchComplete(sum_of_students);
+                }
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                if (listener != null) {
+                    listener.onFetchComplete(0); // Return 0 if error occurs
+                }
             }
         });
 
@@ -84,4 +93,5 @@ public class FetchedTeacherClassesThread extends Thread{
 
 
     }
+
 }

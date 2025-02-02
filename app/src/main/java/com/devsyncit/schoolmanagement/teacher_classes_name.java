@@ -34,7 +34,6 @@ import java.util.HashMap;
 
 public class teacher_classes_name extends AppCompatActivity {
     RecyclerView classes_and_section;
-    public static int t_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,22 +42,17 @@ public class teacher_classes_name extends AppCompatActivity {
 
         classes_and_section = findViewById(R.id.classes_and_section);
 
-         Intent intent = getIntent();
-         t_id = Integer.parseInt(intent.getStringExtra("teacher_id"));
+        ClassesAndSectionAdapter adapter = new ClassesAndSectionAdapter();
+        classes_and_section.setAdapter(adapter);
 
-           ClassesAndSectionAdapter adapter = new ClassesAndSectionAdapter();
-           classes_and_section.setAdapter(adapter);
-
-           classes_and_section.setLayoutManager(new LinearLayoutManager(teacher_classes_name.this));
-
-
+        classes_and_section.setLayoutManager(new LinearLayoutManager(teacher_classes_name.this));
 
 
     }
 
-    public class ClassesAndSectionAdapter extends RecyclerView.Adapter <ClassesAndSectionAdapter.ClassesAndSectionViewHolder>{
+    public class ClassesAndSectionAdapter extends RecyclerView.Adapter<ClassesAndSectionAdapter.ClassesAndSectionViewHolder> {
 
-        public class ClassesAndSectionViewHolder extends RecyclerView.ViewHolder{
+        public class ClassesAndSectionViewHolder extends RecyclerView.ViewHolder {
 
             TextView class_no_and_section_name, no_of_students, course_name;
 
@@ -85,18 +79,18 @@ public class teacher_classes_name extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull ClassesAndSectionViewHolder holder, int position) {
 
-                HashMap<String, String> get_course_data = FetchedTeacherClassesThread.arrayList.get(position);
+            HashMap<String, String> get_course_data = FetchedTeacherClassesThread.arrayList.get(position);
 
-                String name = get_course_data.get("name");
-                String Class = get_course_data.get("Class");
-                String section = get_course_data.get("section");
-                String no_of_students = get_course_data.get("no_of_students");
-                String course_name = get_course_data.get("course_name");
+            String name = get_course_data.get("name");
+            String Class = get_course_data.get("Class");
+            String section = get_course_data.get("section");
+            String no_of_students = get_course_data.get("no_of_students");
+            String course_name = get_course_data.get("course_name");
 
 
-                holder.class_no_and_section_name.setText("Class : "+Class+" | Section : "+section);
-                holder.no_of_students.setText(no_of_students+" Students");
-                holder.course_name.setText("Course : "+course_name);
+            holder.class_no_and_section_name.setText("Class : " + Class + " | Section : " + section);
+            holder.no_of_students.setText(no_of_students + " Students");
+            holder.course_name.setText("Course : " + course_name);
 
         }
 
