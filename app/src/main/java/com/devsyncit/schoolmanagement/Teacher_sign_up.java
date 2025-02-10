@@ -24,8 +24,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class Teacher_sign_up extends AppCompatActivity {
 
-    TextInputEditText teacher_id, teacher_email, teacher_password, teacher_name
-            , teacher_mobile_number, teacher_department;
+    TextInputEditText teacher_id, teacher_email, teacher_password, teacher_name, teacher_mobile_number, teacher_department;
     MaterialButton teacher_sign_up_btn;
     TextView sign_up_as_student;
 
@@ -57,30 +56,30 @@ public class Teacher_sign_up extends AppCompatActivity {
 
 
                 if (t_full_name.isBlank() || t_email.isBlank() || t_password.isBlank() || t_mobile_number.isBlank()
-                        || t_id.isBlank() || t_department.isBlank()){
+                        || t_id.isBlank() || t_department.isBlank()) {
 
                     Toast.makeText(Teacher_sign_up.this, "Please fill out blank field", Toast.LENGTH_LONG).show();
 
-                }else {
+                } else {
 
-                    if (!Patterns.EMAIL_ADDRESS.matcher(t_email).matches()){
+                    if (!Patterns.EMAIL_ADDRESS.matcher(t_email).matches()) {
 
                         Toast.makeText(Teacher_sign_up.this, "Please Enter valid email address", Toast.LENGTH_LONG).show();
 
-                    }else {
+                    } else {
 
                         RequestQueue queue = Volley.newRequestQueue(Teacher_sign_up.this);
-                        String url = "http://192.168.0.108/Apps/teacher_data.php?id="+t_id+"&name="+t_full_name+"&email="+t_email+"&password="+t_password+"&mb_number="+t_mobile_number+"&department="+t_department;
+                        String url = "http://192.168.0.102/Apps/teacher_data.php?id=" + t_id + "&name=" + t_full_name + "&email=" + t_email + "&password=" + t_password + "&mb_number=" + t_mobile_number + "&department=" + t_department;
 
                         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
 
-                                        if (response.toString().contains("Sign Up Successfull")){
-                                            Toast.makeText(Teacher_sign_up.this, ""+response.toString(), Toast.LENGTH_LONG).show();
+                                        if (response.toString().contains("Sign Up Successfull")) {
+                                            Toast.makeText(Teacher_sign_up.this, "" + response.toString(), Toast.LENGTH_LONG).show();
                                             onBackPressed();
-                                        }else {
+                                        } else {
                                             Toast.makeText(Teacher_sign_up.this, "Something Wrong", Toast.LENGTH_LONG).show();
                                         }
 
@@ -89,8 +88,8 @@ public class Teacher_sign_up extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
 
-                                Log.d("error", ""+error);
-                                Toast.makeText(Teacher_sign_up.this, ""+error.toString(), Toast.LENGTH_LONG).show();
+                                Log.d("error", "" + error);
+                                Toast.makeText(Teacher_sign_up.this, "" + error.toString(), Toast.LENGTH_LONG).show();
 
                             }
                         });

@@ -23,8 +23,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.regex.Pattern;
 
 public class Student_sign_up extends AppCompatActivity {
-    TextInputEditText student_full_name, student_email, student_password, student_mobile_number
-            , student_class, student_roll;
+    TextInputEditText student_full_name, student_email, student_password, student_mobile_number, student_class, student_roll;
     MaterialButton student_sign_up_btn;
     TextView sign_up_as_teacher;
 
@@ -62,34 +61,34 @@ public class Student_sign_up extends AppCompatActivity {
 
 
                 if (s_full_name.isBlank() || s_email.isBlank() || s_password.isBlank() || s_mobile_number.isBlank()
-                || s_class.isBlank() || s_roll.isBlank()){
+                        || s_class.isBlank() || s_roll.isBlank()) {
 
                     Toast.makeText(Student_sign_up.this, "Please fill out blank field", Toast.LENGTH_LONG).show();
 
-                }else {
+                } else {
 
-                    if (!Patterns.EMAIL_ADDRESS.matcher(s_email).matches()){
+                    if (!Patterns.EMAIL_ADDRESS.matcher(s_email).matches()) {
 
                         Toast.makeText(Student_sign_up.this, "Please Enter valid email address", Toast.LENGTH_LONG).show();
 
-                    }else {
+                    } else {
 
                         int s_int_class = Integer.parseInt(s_class);
 
-                        if (s_int_class>0 && s_int_class<=10){
+                        if (s_int_class > 0 && s_int_class <= 10) {
 
                             RequestQueue queue = Volley.newRequestQueue(Student_sign_up.this);
-                            String url = "http://192.168.0.108/Apps/student_data.php?roll="+s_roll+"&name="+s_full_name+"&email="+s_email+"&password="+s_password+"&mb_number="+s_mobile_number+"&class="+s_class;
+                            String url = "http://192.168.0.102/Apps/student_data.php?roll=" + s_roll + "&name=" + s_full_name + "&email=" + s_email + "&password=" + s_password + "&mb_number=" + s_mobile_number + "&class=" + s_class;
 
                             StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                                     new Response.Listener<String>() {
                                         @Override
                                         public void onResponse(String response) {
 
-                                            if (response.toString().contains("Sign Up Successfull")){
-                                                Toast.makeText(Student_sign_up.this, ""+response.toString(), Toast.LENGTH_LONG).show();
+                                            if (response.toString().contains("Sign Up Successfull")) {
+                                                Toast.makeText(Student_sign_up.this, "" + response.toString(), Toast.LENGTH_LONG).show();
                                                 onBackPressed();
-                                            }else {
+                                            } else {
                                                 Toast.makeText(Student_sign_up.this, "Something Wrong", Toast.LENGTH_LONG).show();
                                             }
 
@@ -97,13 +96,13 @@ public class Student_sign_up extends AppCompatActivity {
                                     }, new Response.ErrorListener() {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
-                                    Log.d("error", ""+error);
-                                    Toast.makeText(Student_sign_up.this, ""+error.toString(), Toast.LENGTH_LONG).show();
+                                    Log.d("error", "" + error);
+                                    Toast.makeText(Student_sign_up.this, "" + error.toString(), Toast.LENGTH_LONG).show();
                                 }
                             });
 
                             queue.add(stringRequest);
-                        }else {
+                        } else {
                             Toast.makeText(Student_sign_up.this, "Please Provide valid class", Toast.LENGTH_LONG).show();
                         }
 

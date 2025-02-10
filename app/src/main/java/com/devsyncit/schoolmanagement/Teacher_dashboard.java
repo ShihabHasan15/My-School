@@ -30,8 +30,8 @@ public class Teacher_dashboard extends AppCompatActivity {
     ImageSlider imageSlider;
     List<SlideModel> teacher_notice_board;
     MaterialCardView view_students_btn;
-    TextView teacher_profile_name, teacher_profile_email, students_count_under_teacher;
-    public static int total_students = 0;
+    TextView teacher_profile_name, teacher_profile_email;
+    public static TextView students_count_under_teacher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,26 +45,26 @@ public class Teacher_dashboard extends AppCompatActivity {
         teacher_profile_email = findViewById(R.id.teacher_profile_email);
         students_count_under_teacher = findViewById(R.id.students_count_under_teacher);
 
-            Intent intent = getIntent();
-            String t_name = intent.getStringExtra("teacher_name");
-            String t_email = intent.getStringExtra("teacher_email");
-            String t_phone_number = intent.getStringExtra("teacher_phone_number");
-            String t_id = intent.getStringExtra("teacher_id");
+        Intent intent = getIntent();
+        String t_name = intent.getStringExtra("teacher_name");
+        String t_email = intent.getStringExtra("teacher_email");
+        String t_phone_number = intent.getStringExtra("teacher_phone_number");
+        String t_id = intent.getStringExtra("teacher_id");
+        String totalStudents = intent.getStringExtra("total_students");
 
-
-            teacher_profile_name.setText(t_name);
-            teacher_profile_email.setText(t_email);
-            students_count_under_teacher.setText(""+total_students);
+        teacher_profile_name.setText(t_name);
+        teacher_profile_email.setText(t_email);
+        students_count_under_teacher.setText(totalStudents);
 
         view_students_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent postIntent = new Intent(Teacher_dashboard.this, teacher_classes_name.class);
 
-                postIntent.putExtra("teacher_name", ""+t_name);
-                postIntent.putExtra("teacher_email", ""+t_email);
-                postIntent.putExtra("teacher_mobile_number", ""+t_phone_number);
-                postIntent.putExtra("teacher_id", ""+t_id);
+                postIntent.putExtra("teacher_name", "" + t_name);
+                postIntent.putExtra("teacher_email", "" + t_email);
+                postIntent.putExtra("teacher_mobile_number", "" + t_phone_number);
+                postIntent.putExtra("teacher_id", "" + t_id);
 
                 startActivity(postIntent);
             }
@@ -82,7 +82,6 @@ public class Teacher_dashboard extends AppCompatActivity {
         imageSlider.startSliding(3000);
 
 
-
         TimeLineAdapter adapter = new TimeLineAdapter();
         timeLineRecyclerView.setAdapter(adapter);
         timeLineRecyclerView.setLayoutManager(new LinearLayoutManager(Teacher_dashboard.this));
@@ -91,10 +90,10 @@ public class Teacher_dashboard extends AppCompatActivity {
     }
 
 
-    public class TimeLineAdapter extends RecyclerView.Adapter <TimeLineAdapter.TimeLineViewHolder> {
+    public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineAdapter.TimeLineViewHolder> {
 
 
-        public class TimeLineViewHolder extends RecyclerView.ViewHolder{
+        public class TimeLineViewHolder extends RecyclerView.ViewHolder {
 
             public TimeLineViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -107,7 +106,6 @@ public class Teacher_dashboard extends AppCompatActivity {
 
             LayoutInflater inflater = getLayoutInflater();
             View TimeLineView = inflater.inflate(R.layout.time_line_view, parent, false);
-
 
 
             return new TimeLineViewHolder(TimeLineView);
@@ -125,5 +123,9 @@ public class Teacher_dashboard extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
+    }
 }
