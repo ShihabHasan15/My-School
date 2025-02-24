@@ -32,7 +32,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SignIn extends AppCompatActivity {
-
     MaterialButton sign_in_btn;
     TextInputEditText email, password;
     HashMap<String, String> hashMap;
@@ -80,8 +79,9 @@ public class SignIn extends AppCompatActivity {
                     if (!Patterns.EMAIL_ADDRESS.matcher(user_email).matches()) {
                         Toast.makeText(SignIn.this, "Please provide valid email address", Toast.LENGTH_LONG).show();
                     } else {
+                        
                         RequestQueue queue = Volley.newRequestQueue(SignIn.this);
-                        String url = "http://192.168.0.102/Apps/student_data_get.php";
+                        String url = "http://192.168.3.186/Apps/student_data_get.php";
 
                         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                                 new Response.Listener<JSONArray>() {

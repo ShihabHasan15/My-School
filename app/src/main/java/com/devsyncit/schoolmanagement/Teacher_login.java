@@ -27,7 +27,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Teacher_login extends AppCompatActivity {
@@ -36,7 +38,8 @@ public class Teacher_login extends AppCompatActivity {
     HashMap<String, String> hashMap;
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
     TextView login_as_student;
-
+    int apiResponses = 0;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,16 @@ public class Teacher_login extends AppCompatActivity {
         sign_in_btn = findViewById(R.id.user_sign_in_btn);
 
         login_as_student = findViewById(R.id.login_as_student);
+
+        /////////////////////////
+
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        Date d = new Date();
+        String dayOfTheWeek = sdf.format(d);
+//        System.out.println(dayOfTheWeek);
+
+        ///////////////////////////
+
 
         login_as_student.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +86,7 @@ public class Teacher_login extends AppCompatActivity {
                     } else {
 
                         RequestQueue queue = Volley.newRequestQueue(Teacher_login.this);
-                        String url = "http://192.168.0.102/Apps/teacher_data_get.php";
+                        String url = "http://192.168.3.186/Apps/teacher_data_get.php";
 
                         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,
                                 null, new Response.Listener<JSONArray>() {
@@ -123,29 +136,19 @@ public class Teacher_login extends AppCompatActivity {
 
                                     if (isMatched == true) {
 
-                                        if (user_email.contains("admin@gmail.com") && user_password.contains("admin")) {
+                                        if (user_email.equals("admin@gmail.com") && user_password.equals("admin")) {
                                             startActivity(new Intent(Teacher_login.this, Teacher_dashboard.class));
                                             finish();
                                         } else {
                                             Intent intent = new Intent(Teacher_login.this, Teacher_dashboard.class);
-                                            intent.putExtra("teacher_name", "" + full_name);
-                                            intent.putExtra("teacher_email", "" + email);
-                                            intent.putExtra("teacher_phone_number", "" + mobile_number);
+//                                            intent.putExtra("teacher_name", "" + full_name);
+//                                            intent.putExtra("teacher_email", "" + email);
+//                                            intent.putExtra("teacher_phone_number", "" + mobile_number);
                                             intent.putExtra("teacher_id", "" + t_id);
 
-                                            FetchedTeacherClassesThread thread = new FetchedTeacherClassesThread(Teacher_login.this, t_id,
-                                                    new FetchedTeacherClassesThread.OnFetchCompleteListener() {
-                                                        @Override
-                                                        public void onFetchComplete(int totalStudents) {
+                                            Toast.makeText(Teacher_login.this, "Welcome Back", Toast.LENGTH_SHORT).show();
 
-                                                            intent.putExtra("total_students", "" + totalStudents);
-
-                                                            startActivity(intent);
-                                                            Toast.makeText(Teacher_login.this, "Welcome Back", Toast.LENGTH_SHORT).show();
-                                                            finish();
-                                                        }
-                                                    });
-                                            thread.start();
+                                            startActivity(intent);
 
                                         }
 
@@ -171,11 +174,22 @@ public class Teacher_login extends AppCompatActivity {
 
                         queue.add(jsonArrayRequest);
 
+
                     }
                 }
+
+
+
+
+
             }
         });
 
+
+    }
+
+
+    public void api1(String user_email, String user_password){
 
     }
 }
