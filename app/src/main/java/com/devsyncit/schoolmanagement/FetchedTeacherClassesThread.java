@@ -15,7 +15,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class FetchedTeacherClassesThread extends Thread {
@@ -25,6 +27,9 @@ public class FetchedTeacherClassesThread extends Thread {
     public static ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
     public String teacher_id;
     OnFetchCompleteListener listener;
+    SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+    Date d = new Date();
+    String dayOfTheWeek = sdf.format(d);
 
     public interface OnFetchCompleteListener {
         void onFetchComplete(int totalStudents);
@@ -40,7 +45,7 @@ public class FetchedTeacherClassesThread extends Thread {
     public void run() {
 
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://192.168.0.102/Apps/teacher_course_list_data_get.php?t_id=" + teacher_id;
+        String url = "http://192.168.0.105/Apps/teacher_course_list_data_get.php?t_id="+teacher_id+"&day="+dayOfTheWeek;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url
                 , null, new Response.Listener<JSONArray>() {
@@ -60,14 +65,18 @@ public class FetchedTeacherClassesThread extends Thread {
                         hashMap = new HashMap<>();
                         hashMap.put("name", jsonObject.getString("name"));
                         hashMap.put("Class", jsonObject.getString("class"));
-                        hashMap.put("section", jsonObject.getString("section"));
+//                        hashMap.put("section", jsonObject.getString("section"));
                         String no_of_students = jsonObject.getString("no_of_students");
                         hashMap.put("no_of_students", no_of_students);
                         hashMap.put("course_name", jsonObject.getString("course_name"));
+                        hashMap.put("id", jsonObject.getString("id"));
+                        hashMap.put("course_id", jsonObject.getString("course_id"));
+                        hashMap.put("class_start_time", jsonObject.getString("class_start_time"));
+                        hashMap.put("class_end_time", jsonObject.getString("class_end_time"));
 
                         arrayList.add(hashMap);
 
-                        sum_of_students = sum_of_students + Integer.parseInt(no_of_students);
+                        sum_of_students = sum_of_students + Integer.parseInt(no_of_students.trim());
 
                     } catch (JSONException e) {
                         throw new RuntimeException(e);

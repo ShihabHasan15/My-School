@@ -89,7 +89,17 @@
     </androidx.appcompat.widget.Toolbar>
 
 
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/teacher_toolbar"/>
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/teacher_toolbar"
@@ -98,7 +108,16 @@
         android:layout_alignParentBottom="true"
         android:scrollbars="none"
         android:fillViewport="true"
+        android:visibility="gone"
         >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -106,7 +125,7 @@
         android:orientation="vertical"
         android:layout_margin="10dp"
         >
-
+        
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/teacher_dash_image_slider_card"
@@ -260,6 +279,7 @@
             android:layout_marginTop="10dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
+    </LinearLayout>
     </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
