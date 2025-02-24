@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
+ob_clean();
 
 $con = mysqli_connect("localhost", "root", "", "teacher");
 $t_id = $_GET['t_id'];
