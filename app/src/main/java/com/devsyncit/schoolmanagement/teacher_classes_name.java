@@ -79,7 +79,7 @@ public class teacher_classes_name extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull ClassesAndSectionViewHolder holder, int position) {
 
-            HashMap<String, String> get_course_data = FetchedTeacherClassesThread.arrayList.get(position);
+            HashMap<String, String> get_course_data = Teacher_dashboard.dashboardList.get(position);
 
             String name = get_course_data.get("name");
             String Class = get_course_data.get("Class");
@@ -96,7 +96,7 @@ public class teacher_classes_name extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return FetchedTeacherClassesThread.arrayList.size();
+            return Teacher_dashboard.dashboardList.size();
         }
 
     }

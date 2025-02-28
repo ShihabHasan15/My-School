@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,11 +55,12 @@ public class Teacher_dashboard extends AppCompatActivity {
     RecyclerView timeLineRecyclerView;
     ImageSlider imageSlider;
     List<SlideModel> teacher_notice_board;
-    ArrayList<HashMap<String, String>> dashboardList = new ArrayList<>();
+    public static ArrayList<HashMap<String, String>> dashboardList = new ArrayList<>();
     HashMap<String, String> dashboardMap;
     MaterialCardView view_students_btn;
     ProgressBar progress;
     NestedScrollView scrollView;
+    ImageButton chat;
     TextView teacher_profile_name, teacher_profile_email;
     public static TextView students_count_under_teacher;
 
@@ -75,7 +78,14 @@ public class Teacher_dashboard extends AppCompatActivity {
         students_count_under_teacher = findViewById(R.id.students_count_under_teacher);
         progress = findViewById(R.id.progress);
         scrollView = findViewById(R.id.scroll_view);
+        chat = findViewById(R.id.chat);
 
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         Date d = new Date();
@@ -94,7 +104,7 @@ public class Teacher_dashboard extends AppCompatActivity {
 
 
         RequestQueue queue = Volley.newRequestQueue(Teacher_dashboard.this);
-        String url = "http://192.168.3.186/Apps/teacher_course_list_data_get.php?t_id=" + t_id;
+        String url = "http://192.168.0.108/Apps/teacher_course_list_data_get.php?t_id=" + t_id;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -149,7 +159,7 @@ public class Teacher_dashboard extends AppCompatActivity {
                             }
 
                             Log.d("students", "" + sum_of_students);
-//                            students_count_under_teacher.setText(sum_of_students);
+                            students_count_under_teacher.setText(""+sum_of_students);
 
                         } catch (JSONException e) {
                             throw new RuntimeException(e);

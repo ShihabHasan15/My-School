@@ -44,7 +44,7 @@
                     android:id="@+id/teacher_profile_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dipankar Bala"
+                    android:text="-------"
                     android:textColor="@color/white"
                     android:fontFamily="@font/mulish_bold"
                     android:textSize="18sp"
@@ -62,7 +62,7 @@
                         android:id="@+id/teacher_profile_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="dipankarbala@gmail.com"
+                        android:text="-----------------------"
                         android:textColor="@color/white"
                         android:fontFamily="@font/mulish_bold"
                         android:textSize="16sp"
@@ -76,10 +76,20 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/student_notification"
+            android:id="@+id/teacher_notification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/notification_icon"
+            android:layout_gravity="right"
+            android:background="#00FFFFFF"
+            android:layout_marginRight="20dp"
+            />
+
+        <ImageButton
+            android:id="@+id/chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/chat_icon"
             android:layout_gravity="right"
             android:background="#00FFFFFF"
             android:layout_marginRight="20dp"

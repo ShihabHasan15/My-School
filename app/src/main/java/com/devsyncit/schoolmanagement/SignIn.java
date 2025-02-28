@@ -81,7 +81,7 @@ public class SignIn extends AppCompatActivity {
                     } else {
                         
                         RequestQueue queue = Volley.newRequestQueue(SignIn.this);
-                        String url = "http://192.168.3.186/Apps/student_data_get.php";
+                        String url = "http://192.168.0.108/Apps/student_data_get.php";
 
                         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                                 new Response.Listener<JSONArray>() {
