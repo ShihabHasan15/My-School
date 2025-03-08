@@ -5,11 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".chat_activity"
-    android:orientation="vertical">
+    tools:context=".student_chat_activity"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/teacher_chat_toolbar"
+        android:id="@+id/student_chat_toolbar"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/toolbar_design"
@@ -37,7 +39,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chat_recycle"
+        android:id="@+id/student_chat_recycle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
