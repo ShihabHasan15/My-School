@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".teacher_chatting"
+            android:exported="false" />
+        <activity
             android:name=".student_chatting_activity"
             android:exported="false" />
         <activity

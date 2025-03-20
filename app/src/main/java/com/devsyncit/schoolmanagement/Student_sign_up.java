@@ -78,7 +78,7 @@ public class Student_sign_up extends AppCompatActivity {
                         if (s_int_class > 0 && s_int_class <= 10) {
 
                             RequestQueue queue = Volley.newRequestQueue(Student_sign_up.this);
-                            String url = "http://192.168.0.104/Apps/student_data.php?roll=" + s_roll + "&name=" + s_full_name + "&email=" + s_email + "&password=" + s_password + "&mb_number=" + s_mobile_number + "&class=" + s_class;
+                            String url = "http://192.168.0.105/Apps/student_data.php?roll=" + s_roll + "&name=" + s_full_name + "&email=" + s_email + "&password=" + s_password + "&mb_number=" + s_mobile_number + "&class=" + s_class;
 
                             StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                                     new Response.Listener<String>() {

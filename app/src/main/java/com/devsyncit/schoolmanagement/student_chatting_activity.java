@@ -62,11 +62,9 @@ public class student_chatting_activity extends AppCompatActivity {
 
         userName.setText(""+teacher_name);
 
-
         ChatAdapter adapter = new ChatAdapter();
         messages.setAdapter(adapter);
         messages.setLayoutManager(new LinearLayoutManager(student_chatting_activity.this));
-
 
 //        String chat_message = message_edittext.getText().toString();
 
@@ -94,20 +92,19 @@ public class student_chatting_activity extends AppCompatActivity {
 
                     chatListRef.push().setValue(hashMap);
 
-
                     HashMap<String, String> messageMap = new HashMap<>();
                     messageMap.put("sender", ""+student_roll);
                     messageMap.put("message", ""+chat_message);
 
                     messagesRef.push().setValue(messageMap);
                     message_edittext.setText("");
-
+                    if (messageList.size() > 0) {
+                        messages.post(() -> messages.smoothScrollToPosition(messageList.size() - 1));
+                    }
                     
                 }
             }
         });
-
-
 
 
         messagesRef.addValueEventListener(new ValueEventListener() {
@@ -128,7 +125,6 @@ public class student_chatting_activity extends AppCompatActivity {
 
                 adapter.notifyDataSetChanged();
 
-
             }
 
             @Override
@@ -136,8 +132,6 @@ public class student_chatting_activity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private String generateChatRoomID(String teacherId, String studentRoll) {
@@ -186,7 +180,6 @@ public class student_chatting_activity extends AppCompatActivity {
                 View leftView = inflater.inflate(R.layout.item_left_message, parent, false);
                 return new LeftViewHolder(leftView);
             }
-
         }
 
         @Override
@@ -198,7 +191,6 @@ public class student_chatting_activity extends AppCompatActivity {
                 String chat_message = messageList.get(position);
 
                 rightViewHolder.textViewRightMessage.setText(chat_message);
-
 
             }else {
                 LeftViewHolder leftViewHolder = (LeftViewHolder) holder;

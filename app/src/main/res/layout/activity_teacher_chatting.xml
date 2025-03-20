@@ -48,35 +48,36 @@
         android:layout_height="match_parent">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_above="@+id/linear_layout"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        >
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/messages"
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical"
-            />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_above="@+id/linear_layout"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/messages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
+            android:layout_marginTop="508dp"
+            android:background="#00FFFFFF"
             android:gravity="center"
-            >
+            android:orientation="horizontal">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/messageBox"
@@ -89,10 +90,10 @@
                     android:id="@+id/message_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="15dp"
                     android:background="#00000000"
+                    android:fontFamily="@font/mulish_bold"
                     android:hint="Enter message"
-                    android:fontFamily="@font/mulish_bold"/>
+                    android:padding="15dp" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -101,14 +102,15 @@
                 android:id="@+id/send_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:text="Send"
-                android:textColor="@color/white"
-                android:layout_marginLeft="15dp"/>
+                android:textColor="@color/white" />
 
         </LinearLayout>
 
 
     </RelativeLayout>
+
 
 
 

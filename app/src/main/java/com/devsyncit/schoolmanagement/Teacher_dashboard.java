@@ -80,13 +80,6 @@ public class Teacher_dashboard extends AppCompatActivity {
         scrollView = findViewById(R.id.scroll_view);
         chat = findViewById(R.id.chat);
 
-        chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         Date d = new Date();
         String dayOfTheWeek = sdf.format(d);
@@ -99,12 +92,27 @@ public class Teacher_dashboard extends AppCompatActivity {
         String t_id = intent.getStringExtra("teacher_id");
 //        String totalStudents = intent.getStringExtra("total_students");
 
+        Teacher_id.setTeacher_id(t_id);
+
+        Log.d("teacher_id", ""+t_id);
 
 //                                  My code
 
 
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent chatIntent = new Intent(Teacher_dashboard.this, chat_activity.class);
+//                intent.putExtra("teacher_id", ""+t_id);
+                Log.d("intent_teacher_id", ""+t_id);
+                startActivity(chatIntent);
+            }
+        });
+
+
         RequestQueue queue = Volley.newRequestQueue(Teacher_dashboard.this);
-        String url = "http://192.168.0.108/Apps/teacher_course_list_data_get.php?t_id=" + t_id;
+        String url = "http://192.168.0.105/Apps/teacher_course_list_data_get.php?t_id=" + t_id;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
