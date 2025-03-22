@@ -69,7 +69,7 @@ public class Teacher_sign_up extends AppCompatActivity {
                     } else {
 
                         RequestQueue queue = Volley.newRequestQueue(Teacher_sign_up.this);
-                        String url = "http://192.168.0.105/Apps/teacher_data.php?id=" + t_id + "&name=" + t_full_name + "&email=" + t_email + "&password=" + t_password + "&mb_number=" + t_mobile_number + "&department=" + t_department;
+                        String url = "http://192.168.0.111/Apps/teacher_data.php?id=" + t_id + "&name=" + t_full_name + "&email=" + t_email + "&password=" + t_password + "&mb_number=" + t_mobile_number + "&department=" + t_department;
 
                         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                                 new Response.Listener<String>() {

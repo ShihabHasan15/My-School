@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -108,6 +109,15 @@ public class Student_dashboard extends AppCompatActivity {
                     TextView menu_bottom_student_name = bottom_sheet_view.findViewById(R.id.menu_bottom_student_name);
                     TextView menu_bottom_class = bottom_sheet_view.findViewById(R.id.menu_bottom_class);
                     TextView menu_bottom_class_roll = bottom_sheet_view.findViewById(R.id.menu_bottom_class_roll);
+
+                    ImageButton attendence = bottom_sheet_view.findViewById(R.id.student_attendence);
+
+                    attendence.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            startActivity(new Intent(Student_dashboard.this, Payment_activity.class));
+                        }
+                    });
 
                     menu_bottom_student_name.setText(student_name);
                     menu_bottom_class.setText(student_class_no);
