@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.denzcoskun.imageslider.ImageSlider;
@@ -25,6 +26,7 @@ public class Student_dashboard_frag extends Fragment {
     List<SlideModel> imageList;
     GridView student_list_grid;
     TextView student_profile_name, student_class, student_roll;
+    ImageButton student_chat;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class Student_dashboard_frag extends Fragment {
         student_profile_name = myView.findViewById(R.id.student_profile_name);
         student_class = myView.findViewById(R.id.student_class);
         student_roll = myView.findViewById(R.id.student_roll);
+        student_chat = myView.findViewById(R.id.student_chat);
 
         Subject_list_grid_adapter adapter = new Subject_list_grid_adapter(getContext());
 
@@ -54,6 +57,17 @@ public class Student_dashboard_frag extends Fragment {
             student_class.setText("" + student_class_no);
             student_roll.setText("" + student_roll_no.charAt(student_roll_no.length() - 4) + student_roll_no.charAt(student_roll_no.length() - 3)
                     + student_roll_no.charAt(student_roll_no.length() - 2) + student_roll_no.charAt(student_roll_no.length() - 1));
+
+            student_chat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), student_chat_activity.class);
+                    intent.putExtra("student_name", ""+student_name);
+                    intent.putExtra("student_class_no", ""+student_class_no);
+                    intent.putExtra("student_roll", ""+student_roll_no);
+                    startActivity(intent);
+                }
+            });
         }
 
         imageList = new ArrayList<>();

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/teacher_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#E9F6F4F4"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="15dp"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            >
+
+            <TextView
+                android:id="@+id/teacher_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dipankar Bala"
+                android:textSize="22sp"
+                android:fontFamily="@font/mulish_bold"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/teacher_department"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Department: CSE"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/mulish_bold"
+                android:textColor="@color/grey"
+                />
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
