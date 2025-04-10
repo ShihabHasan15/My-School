@@ -51,7 +51,7 @@ public class student_chat_activity extends AppCompatActivity {
 
 
         RequestQueue queue = Volley.newRequestQueue(student_chat_activity.this);
-        String url = "http://192.168.0.111/Apps/teacher_data_get.php";
+        String url = "http://192.168.0.105/Apps/teacher_data_get.php";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONArray>() {

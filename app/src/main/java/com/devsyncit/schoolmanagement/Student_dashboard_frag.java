@@ -5,17 +5,29 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.AnimationTypes;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +52,6 @@ public class Student_dashboard_frag extends Fragment {
         student_roll = myView.findViewById(R.id.student_roll);
         student_chat = myView.findViewById(R.id.student_chat);
 
-        Subject_list_grid_adapter adapter = new Subject_list_grid_adapter(getContext());
-
-        student_list_grid.setAdapter(adapter);
-
 
         //==========Getting Data from intent================
         if (getArguments() != null) {
@@ -53,10 +61,22 @@ public class Student_dashboard_frag extends Fragment {
 
             //=============End==================================
 
+
+            Log.d("info", ""+student_name);
+            Log.d("info", ""+student_class_no);
+            Log.d("info", ""+student_roll_no);
+
+            Subject_list_grid_adapter adapter = new Subject_list_grid_adapter(getContext());
+
+            student_list_grid.setAdapter(adapter);
+
             student_profile_name.setText("" + student_name);
             student_class.setText("" + student_class_no);
             student_roll.setText("" + student_roll_no.charAt(student_roll_no.length() - 4) + student_roll_no.charAt(student_roll_no.length() - 3)
                     + student_roll_no.charAt(student_roll_no.length() - 2) + student_roll_no.charAt(student_roll_no.length() - 1));
+
+
+
 
             student_chat.setOnClickListener(new View.OnClickListener() {
                 @Override

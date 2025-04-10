@@ -2,6 +2,7 @@ package com.devsyncit.schoolmanagement;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,6 +50,10 @@ public class Student_dashboard extends AppCompatActivity {
         //=============End==================================
 
 
+        Log.d("dash_info", ""+student_name);
+        Log.d("dash_info", ""+student_class_no);
+        Log.d("dash_info", ""+student_roll_no);
+
         student_dashboard_bottom_nav = findViewById(R.id.student_dashboard_bottom);
 
         Student_dashboard_frag studentDashboardFrag = new Student_dashboard_frag();
@@ -88,9 +93,16 @@ public class Student_dashboard extends AppCompatActivity {
 
                 } else if (item.getItemId()==R.id.bottom_teachers) {
 
+                    Teachers_section_fragment teachersSectionFragment = new Teachers_section_fragment();
+                    if (getIntent().getExtras() != null){
+                        Bundle bundle = new Bundle();
+                        bundle.putString("student_class", ""+student_class_no);
+                        teachersSectionFragment.setArguments(bundle);
+                    }
+
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction navigation_transaction = fragmentManager.beginTransaction();
-                    navigation_transaction.replace(R.id.navigation_frame, new Teachers_section_fragment());
+                    navigation_transaction.replace(R.id.navigation_frame, teachersSectionFragment);
                     navigation_transaction.commit();
 
                 } else if (item.getItemId()==R.id.bottom_assignments) {

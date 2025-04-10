@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:padding="10dp"
-            android:background="#E9E6E5E5">
+            android:background="@color/white">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/teacher_profile_image"
@@ -27,7 +27,6 @@
                 android:src="@drawable/ic_launcher_background"
                 android:layout_alignParentLeft="true"
                 />
-
 
             <LinearLayout
                 android:layout_width="match_parent"

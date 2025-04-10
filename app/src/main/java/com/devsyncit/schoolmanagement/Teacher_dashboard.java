@@ -112,7 +112,7 @@ public class Teacher_dashboard extends AppCompatActivity {
 
 
         RequestQueue queue = Volley.newRequestQueue(Teacher_dashboard.this);
-        String url = "http://192.168.0.111/Apps/teacher_course_list_data_get.php?t_id=" + t_id;
+        String url = "http://192.168.0.106/Apps/teacher_course_list_data_get.php?t_id=" + t_id;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {

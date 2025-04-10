@@ -8,21 +8,27 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Course_teachers_list_adapter extends BaseAdapter {
 
     Context context;
+    ArrayList<Course_teacher_info> arrayList;
 
-    public Course_teachers_list_adapter(Context context){
+    public Course_teachers_list_adapter(Context context, ArrayList<Course_teacher_info> arrayList){
         this.context = context;
+        this.arrayList = arrayList;
     }
 
 
     @Override
     public int getCount() {
-        return 1;
+        return arrayList.size();
     }
 
     @Override
@@ -40,6 +46,18 @@ public class Course_teachers_list_adapter extends BaseAdapter {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.teachers_details_card_design, parent, false);
+
+        TextView teacher_profile_name = convertView.findViewById(R.id.teacher_profile_name);
+        TextView teacher_subject_name = convertView.findViewById(R.id.teacher_subject_name);
+
+        Course_teacher_info info = arrayList.get(position);
+        String teacher_name = info.getTeacher_name();
+        String course_name = info.getSubject_name();
+
+
+        teacher_profile_name.setText(""+teacher_name);
+        teacher_subject_name.setText(""+course_name);
+
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
