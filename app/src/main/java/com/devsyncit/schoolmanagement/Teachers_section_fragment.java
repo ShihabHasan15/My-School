@@ -50,7 +50,7 @@ public class Teachers_section_fragment extends Fragment {
             Log.d("class_no", ""+student_class_no);
 
             RequestQueue queue = Volley.newRequestQueue(getContext());
-            String url = "http://192.168.0.105/Apps/student_teacher_list_get.php?cls="+student_class_no;
+            String url = Url_Ip.ip+"/Apps/student_teacher_list_get.php?cls="+student_class_no;
 
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url
                     , null, new Response.Listener<JSONArray>() {

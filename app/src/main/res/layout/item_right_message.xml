@@ -13,8 +13,7 @@
         android:padding="8dp"
         android:background="@drawable/bg_right_message"
         android:text="Hi"
-
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:fontFamily="@font/mulish_bold"
         android:textColor="#FFF"
         android:layout_gravity="end"/>

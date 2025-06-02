@@ -48,6 +48,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -56,6 +57,7 @@ public class Teacher_dashboard extends AppCompatActivity {
     ImageSlider imageSlider;
     List<SlideModel> teacher_notice_board;
     public static ArrayList<HashMap<String, String>> dashboardList = new ArrayList<>();
+    public static HashSet<String> counted_class;
     HashMap<String, String> dashboardMap;
     MaterialCardView view_students_btn;
     ProgressBar progress;
@@ -99,7 +101,6 @@ public class Teacher_dashboard extends AppCompatActivity {
 //                                  My code
 
 
-
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,7 +113,7 @@ public class Teacher_dashboard extends AppCompatActivity {
 
 
         RequestQueue queue = Volley.newRequestQueue(Teacher_dashboard.this);
-        String url = "http://192.168.0.106/Apps/teacher_course_list_data_get.php?t_id=" + t_id;
+        String url = Url_Ip.ip+"/Apps/teacher_course_list_data_get.php?t_id=" + t_id;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -127,7 +128,7 @@ public class Teacher_dashboard extends AppCompatActivity {
                         try {
 
                             int sum_of_students = 0;
-
+                            counted_class = new HashSet<>();
 
                             for (int i = 0; i < response.length(); i++) {
 
@@ -162,7 +163,10 @@ public class Teacher_dashboard extends AppCompatActivity {
                                 dashboardList.add(dashboardMap);
 
 
-                                sum_of_students = sum_of_students + Integer.parseInt(no_of_students);
+                                if (!counted_class.contains(Class)){
+                                    sum_of_students = sum_of_students + Integer.parseInt(no_of_students);
+                                    counted_class.add(Class);
+                                }
 
                             }
 
@@ -226,7 +230,7 @@ public class Teacher_dashboard extends AppCompatActivity {
 
         public class TimeLineViewHolder extends RecyclerView.ViewHolder {
 
-            TextView class_start_time, class_end_time, class_no, subject_name;
+            TextView class_start_time, class_end_time, class_no, subject_name, class_day;
             MaterialCardView time_line_back;
 
             public TimeLineViewHolder(@NonNull View itemView) {
@@ -235,6 +239,7 @@ public class Teacher_dashboard extends AppCompatActivity {
                 class_start_time = itemView.findViewById(R.id.class_start_time);
                 class_end_time = itemView.findViewById(R.id.class_end_time);
                 class_no = itemView.findViewById(R.id.class_number);
+                class_day = itemView.findViewById(R.id.class_day);
                 subject_name = itemView.findViewById(R.id.class_subject);
                 time_line_back = itemView.findViewById(R.id.time_line_back);
 
@@ -259,6 +264,7 @@ public class Teacher_dashboard extends AppCompatActivity {
             String class_start_time = courseInfoMap.get("class_start_time");
             String class_end_time = courseInfoMap.get("class_end_time");
             String class_no = courseInfoMap.get("Class");
+            String class_day = courseInfoMap.get("class_day");
             String course_name = courseInfoMap.get("course_name");
 
             if (position==0){
@@ -270,11 +276,13 @@ public class Teacher_dashboard extends AppCompatActivity {
 
 
             Log.d("List size", "" + dashboardList.size());
+            Log.d("class_day", ""+class_day);
 
             holder.class_start_time.setText(class_start_time);
             holder.class_end_time.setText(class_end_time);
             holder.class_no.setText(class_no);
             holder.subject_name.setText(course_name);
+            holder.class_day.setText(class_day);
 
         }
 

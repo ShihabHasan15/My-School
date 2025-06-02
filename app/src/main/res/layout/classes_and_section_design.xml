@@ -33,7 +33,7 @@
                 android:fontFamily="@font/mulish_bold"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:text="Class : 9 | Section : Science"
+                android:text="Class : 9"
                 android:maxLines="1"
                 android:ellipsize="end"/>
 

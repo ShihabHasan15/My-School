@@ -34,6 +34,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class student_chat_activity extends AppCompatActivity {
 
     RecyclerView student_chat_recycle;
@@ -51,7 +53,7 @@ public class student_chat_activity extends AppCompatActivity {
 
 
         RequestQueue queue = Volley.newRequestQueue(student_chat_activity.this);
-        String url = "http://192.168.0.105/Apps/teacher_data_get.php";
+        String url = Url_Ip.ip+"/Apps/teacher_data_get.php";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,
                 null, new Response.Listener<JSONArray>() {
@@ -107,6 +109,7 @@ public class student_chat_activity extends AppCompatActivity {
 
             TextView teacher_name, teacher_department;
             MaterialCardView teacher_card;
+            CircleImageView chat_image;
 
             public studentViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -114,6 +117,7 @@ public class student_chat_activity extends AppCompatActivity {
                 teacher_name = itemView.findViewById(R.id.teacher_name);
                 teacher_department = itemView.findViewById(R.id.teacher_department);
                 teacher_card = itemView.findViewById(R.id.teacher_card);
+                chat_image = itemView.findViewById(R.id.chat_image);
             }
         }
 
@@ -159,8 +163,6 @@ public class student_chat_activity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
-
         }
 
         @Override

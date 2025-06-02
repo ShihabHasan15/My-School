@@ -81,7 +81,7 @@ public class SignIn extends AppCompatActivity {
                     } else {
                         
                         RequestQueue queue = Volley.newRequestQueue(SignIn.this);
-                        String url = "http://192.168.0.105/Apps/student_data_get.php";
+                        String url = Url_Ip.ip+"/Apps/student_data_get.php";
 
                         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                                 new Response.Listener<JSONArray>() {
@@ -138,6 +138,8 @@ public class SignIn extends AppCompatActivity {
                                                     intent.putExtra("student_name", "" + full_name);
                                                     intent.putExtra("student_class", "" + Class);
                                                     intent.putExtra("student_roll", "" + roll);
+                                                    intent.putExtra("student_email", "" + email);
+                                                    intent.putExtra("student_mb_number", "" + mobile_number);
 
                                                     Log.d("std_info", full_name);
                                                     Log.d("std_info",  Class);

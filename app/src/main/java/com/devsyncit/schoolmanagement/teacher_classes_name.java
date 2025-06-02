@@ -88,7 +88,7 @@ public class teacher_classes_name extends AppCompatActivity {
             String course_name = get_course_data.get("course_name");
 
 
-            holder.class_no_and_section_name.setText("Class : " + Class + " | Section : " + section);
+            holder.class_no_and_section_name.setText("Class : " + Class);
             holder.no_of_students.setText(no_of_students + " Students");
             holder.course_name.setText("Course : " + course_name);
 

@@ -1,11 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
     id 'com.google.gms.google-services'
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
     namespace 'com.devsyncit.schoolmanagement'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.devsyncit.schoolmanagement"
@@ -27,6 +28,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
 }
 
 dependencies {
@@ -37,6 +41,7 @@ dependencies {
     implementation libs.constraintlayout
     implementation libs.firebase.database
     implementation libs.firebase.storage
+    implementation libs.core.ktx
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
@@ -54,4 +59,5 @@ dependencies {
     implementation files('sslCommerzSdk.aar')
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'com.github.Spikeysanju:MotionToast:1.4'
+    implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 }

@@ -20,8 +20,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_margin="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/chat_image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_launcher_foreground"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
             >
 
             <TextView
@@ -29,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dipankar Bala"
-                android:textSize="22sp"
+                android:textSize="17sp"
                 android:fontFamily="@font/mulish_bold"
                 android:textColor="@color/black"
                 />
@@ -41,12 +62,14 @@
                 android:text="Department: CSE"
                 android:maxLines="1"
                 android:ellipsize="end"
+                android:textSize="12sp"
                 android:fontFamily="@font/mulish_bold"
                 android:textColor="@color/grey"
                 />
 
         </LinearLayout>
 
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

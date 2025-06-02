@@ -5,7 +5,10 @@
     <color name="grey">#E9474646</color>
     <color name="blue">#1565C0</color>
     <color name="light_blue">#4694ED</color>
+    <color name="extra_light_blue">#9EC8F8</color>
     <color name="green">#249D91</color>
+    <color name="light_grey">#E9E2E2E2</color>
+    <color name="dim_grey">#E9C6C4C4</color>
 
 </resources>
 
