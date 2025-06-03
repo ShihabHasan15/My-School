@@ -23,7 +23,7 @@
                     android:text="Classes and Section"
                     android:textColor="@color/white"
                     android:fontFamily="@font/mulish_bold"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:layout_gravity="center"
                     />
 

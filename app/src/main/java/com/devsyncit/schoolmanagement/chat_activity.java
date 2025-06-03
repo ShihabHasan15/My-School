@@ -1,7 +1,10 @@
 package com.devsyncit.schoolmanagement;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +30,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class chat_activity extends AppCompatActivity {
 
     RecyclerView chat_recycle;
@@ -39,6 +44,7 @@ public class chat_activity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
         chat_recycle = findViewById(R.id.chat_recycle);
+
 
         teacherChatAdapter adapter = new teacherChatAdapter();
         chat_recycle.setAdapter(adapter);
@@ -96,11 +102,13 @@ public class chat_activity extends AppCompatActivity {
 
             TextView student_name;
             MaterialCardView chatPerson;
+            CircleImageView chat_profile;
 
             public teacherCharViewHolder(@NonNull View itemView) {
                 super(itemView);
                 student_name = itemView.findViewById(R.id.sender_name);
                 chatPerson = itemView.findViewById(R.id.chatPerson);
+                chat_profile = itemView.findViewById(R.id.chat_profile);
             }
         }
 
@@ -127,6 +135,27 @@ public class chat_activity extends AppCompatActivity {
             String t_id = Teacher_id.getTeacher_id();
 
 
+            DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Users").child(studentId);
+
+            dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String base64Image = snapshot.child("profileImage").getValue(String.class);
+
+                    if (base64Image!=null){
+                        Bitmap bitmap = decodeBase64ToBitmap(base64Image);
+                        holder.chat_profile.setImageBitmap(bitmap);
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+
             holder.chatPerson.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -144,6 +173,9 @@ public class chat_activity extends AppCompatActivity {
             });
 
 
+
+
+
         }
 
         @Override
@@ -153,6 +185,13 @@ public class chat_activity extends AppCompatActivity {
 
             return arrayList.size();
         }
+    }
+
+
+
+    private Bitmap decodeBase64ToBitmap(String base64Str) {
+        byte[] decodedBytes = Base64.decode(base64Str, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 
 

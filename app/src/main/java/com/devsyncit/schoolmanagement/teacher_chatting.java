@@ -1,7 +1,10 @@
 package com.devsyncit.schoolmanagement;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class teacher_chatting extends AppCompatActivity {
 
     RecyclerView messages;
@@ -37,6 +42,7 @@ public class teacher_chatting extends AppCompatActivity {
     ArrayList<String> messageList = new ArrayList<>();
     ArrayList<String> senderList = new ArrayList<>();
     TextView userName;
+    CircleImageView student_chat_profile_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,7 @@ public class teacher_chatting extends AppCompatActivity {
         message_edittext = findViewById(R.id.message_edittext);
         send_btn = findViewById(R.id.send_btn);
         userName = findViewById(R.id.username);
+        student_chat_profile_image = findViewById(R.id.student_chat_profile_image);
 
         Intent intent = getIntent();
         String teacher_id = intent.getStringExtra("teacher_id");
@@ -55,6 +62,27 @@ public class teacher_chatting extends AppCompatActivity {
 
 
         userName.setText(""+student_name);
+
+
+        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Users").child(student_id);
+
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String base64Image = snapshot.child("profileImage").getValue(String.class);
+
+                if (base64Image!=null){
+                    Bitmap bitmap = decodeBase64ToBitmap(base64Image);
+                    student_chat_profile_image.setImageBitmap(bitmap);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         Log.d("ids", ""+teacher_id);
         Log.d("ids", ""+student_id);
@@ -211,5 +239,11 @@ public class teacher_chatting extends AppCompatActivity {
 
       }
   }
+
+
+    private Bitmap decodeBase64ToBitmap(String base64Str) {
+        byte[] decodedBytes = Base64.decode(base64Str, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+    }
 
 }

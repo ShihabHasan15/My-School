@@ -19,6 +19,7 @@
         android:layout_alignParentLeft="true">
 
         <LinearLayout
+            android:id="@+id/teacher_profile_layout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -27,8 +28,8 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/teacher_profile_image"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/ic_launcher_background"
                 android:layout_gravity="center"
                 />
@@ -47,7 +48,7 @@
                     android:text="-------"
                     android:textColor="@color/white"
                     android:fontFamily="@font/mulish_bold"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     />
 
                 <LinearLayout
@@ -65,7 +66,7 @@
                         android:text="-----------------------"
                         android:textColor="@color/white"
                         android:fontFamily="@font/mulish_bold"
-                        android:textSize="16sp"
+                        android:textSize="13sp"
                         />
 
                 </LinearLayout>
@@ -164,7 +165,7 @@
             android:text="Overview"
             android:textColor="@color/black"
             android:fontFamily="@font/mulish_bold"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             />
@@ -211,7 +212,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/black"
-                            android:textSize="20sp"
+                            android:textSize="16sp"
                             android:fontFamily="@font/mulish_bold"
                             android:text="280"/>
 
@@ -247,7 +248,7 @@
                             android:layout_height="wrap_content"
                             android:text="View Students"
                             android:fontFamily="@font/mulish_bold"
-                            android:textSize="15sp"
+                            android:textSize="14sp"
                             android:textColor="@color/grey"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentTop="true"
@@ -278,7 +279,7 @@
             android:text="Class Schedule"
             android:fontFamily="@font/mulish_bold"
             android:textColor="@color/black"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:layout_marginTop="15dp"/>
 
         <androidx.recyclerview.widget.RecyclerView

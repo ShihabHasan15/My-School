@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,6 +65,7 @@ public class Teacher_dashboard extends AppCompatActivity {
     NestedScrollView scrollView;
     ImageButton chat;
     TextView teacher_profile_name, teacher_profile_email;
+    LinearLayout teacher_profile_layout;
     public static TextView students_count_under_teacher;
 
 
@@ -81,6 +83,8 @@ public class Teacher_dashboard extends AppCompatActivity {
         progress = findViewById(R.id.progress);
         scrollView = findViewById(R.id.scroll_view);
         chat = findViewById(R.id.chat);
+        teacher_profile_layout = findViewById(R.id.teacher_profile_layout);
+
 
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
         Date d = new Date();
